@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<body>
+	<script>
+		var app = angular.module("myShoppingList", []);
+
+		app.controller('myCtrl', function($scope){
+			$scope.products = ["milk", "bread", "cheese"];
+			$scope.addItem = function(){
+				$scope.errortext = "";
+				if(!$scope.addMe) {return;}
+				if($scope.products.indexOf($scope.addMe) == -1){
+					$scope.products.push($scope.addMe);
+				}
+				else{
+					$scope.errortext = "The item is already in your shopping list.";
+				}
+				
+
+			}
+			$scope.removeItem = function(x){
+				$scope.errortext = "";
+				$scope.products.splice(x, 1);
+
+			}
+			
+		});
+	</script>
+
+	<div ng-app="myShoppingList" ng-controller="myCtrl">
+		<div >
+		<ul class="list-group>
+			<li class="list-group-item" ng-repeat="x  in products">{{x}} <span ng-click="removeItem($index)">x</span></li>
+			
+		</ul>
+	</div>
+		<input class="form-control" ng-model="addMe">
+		<button ng-click="addItem()">Add</button>
+		<p>{{errortext}}</p>
+		
+	</div>
+	<p>So far we have made an HTML list based on the items of an array.</p>
+</body>
+</html>
