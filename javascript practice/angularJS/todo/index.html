@@ -15,9 +15,14 @@
 				<header id="header">
 				
 					<form id="todo-form" ng-submit="addTodo()">
-						<input id="new-todo" placeholder="Enter Todo List" ng-model="newTodo" ng-disabled="saving" autofocus>
+						<input id="new-todo" placeholder="Enter Here Todo List" ng-model="newTodo" ng-disabled="saving" autofocus>
 					</form>
 				</header>
+
+
+
+
+
 				<section id="main" ng-show="todos.length" ng-cloak>
 					<input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
 					<label for="toggle-all">Mark all as complete</label>
@@ -34,6 +39,12 @@
 						</li>
 					</ul>
 				</section>
+
+
+
+
+
+
 				<footer id="footer" ng-show="todos.length" ng-cloak>
 					<span id="todo-count"><strong>{{remainingCount}}</strong>
 						<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
